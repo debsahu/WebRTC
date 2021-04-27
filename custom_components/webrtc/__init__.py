@@ -87,7 +87,7 @@ async def start_stream(hass: HomeAssistantType, sdp64: str, url: str = None,
             assert url, f"Can't get URL for {entity}"
 
         # also check if url valid, e.g. wrong chars in password
-        assert urlparse(url).scheme == 'rtsp', "Support only RTSP-stream"
+        assert urlparse(url).scheme == 'rtsp' or urlparse(url).scheme == 'rtmp', "Support only RTSP-stream"
 
         server = hass.data[DOMAIN]
         assert server.available, "WebRTC server not available"
